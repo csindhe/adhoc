@@ -1,0 +1,41 @@
+<div style="border: 1px solid black; padding: 2%; width: 60%;">
+    <h4 style="padding: 2%;">Flying Hero Pipe</h4>
+    <br>
+    <div style="display: flex;">
+        <div style="flex-basis: 30%;">
+            <label for="heronametb">New Flying Hero: </label>
+        </div>
+        <div style="flex-basis: 50%;">
+            <input type="text" name="heronametb" id="heronametb" style="width: 90%;"
+                   [(ngModel)]="heroName" placeholder="Enter hero name..."
+                   (keyup.enter)="addHero(); heroName='';">
+        </div>
+        <div style="flex-basis: 20%;">
+            <input type="checkbox" name="canflycb" id="canflycb" [(ngModel)]="canFly">
+            <label for="canflycb">Can Fly</label>
+        </div>
+    </div>
+    <br>
+    <div>
+        <button type="reset" (click)="reset()">Reset</button>
+    </div>
+    <br>
+    <div style="display: flex;">
+        <div style="flex-basis: 50%; border: 1px solid black;">
+            <h4 style="padding: 2%;">Without Pipe</h4>
+            <div *ngFor="let hero of heroes">
+                <strong>{{  hero.name }}</strong>
+            </div>
+        </div>
+        <div style="flex-basis: 50%; border: 1px solid black;" 
+             [appHighlight]="color" [defaultColor]="red">
+            <h4 style="padding: 2%;">With Pipe</h4>
+            <div *ngFor="let hero of heroes | flyingheroes">
+                <strong>{{ hero.name }}</strong>
+            </div>
+        </div>
+    </div>
+</div>
+<div *appUnless="condition">
+    <h2>Structural Directive</h2>
+</div>
